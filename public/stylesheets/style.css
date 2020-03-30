@@ -1,0 +1,19 @@
+body {
+  background-color:#111;
+  color: #ffffff;
+
+  padding: 50px;
+  font: 14px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.header-font {
+  font-family: "Poppins", sans-serif;
+}
+
+.salmon {
+  color: salmon;
+}
