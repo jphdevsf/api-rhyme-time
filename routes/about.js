@@ -2,9 +2,9 @@ var express = require('express')
 var router = express.Router()
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/about', function (req, res, next) {
   // render pug file
-  res.render('index', { title: 'Rhyme Time' })
+  res.render('about', { title: 'Rhyme Time | About Me' })
 })
 
 module.exports = router

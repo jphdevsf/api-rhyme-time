@@ -3,14 +3,13 @@ extends layout
 block content
   h1.header-font= title
   p Welcome to #{title} my friend
-  form(action='javascript:RhymeBrainSubmit()')
+  form(action='')
   input#RhymeBrainInput(type='text')
   input(type='submit', value='Rhyme')
   
   script(type='text/javascript').
-    var RhymeBrainMaxResults = 50;
+    var RhymeBrainMaxResults = 50
   script(type='text/javascript', src='https://rhymebrain.com/external.js')
   
   p Rhyme results are provided by 
   a(href='https://rhymebrain.com') RhymeBrain.com
-
