@@ -5,6 +5,7 @@ var router = express.Router()
 router.get('/', function (req, res, next) {
   // render pug file
   res.render('index', { title: 'Rhyme Time' })
+  next()
 })
 
 module.exports = router

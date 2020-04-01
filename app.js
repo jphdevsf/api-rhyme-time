@@ -1,36 +1,15 @@
-var express = require('express')
-var path = require('path')
-// var cookieParser = require('cookie-parser')
-var indexRouter = require('./routes/index')
-var aboutRouter = require('./routes/about')
+const express = require('express')
+const path = require('path')
+// const router = express.Router()
+const app = express()
 
-// const apiHelper = require('./apiHelper')
-
-var app = express()
-
-// setup pug views
+// set views folder path where pug files are
 app.set('views', path.join(__dirname, 'views'))
+// set view engine to pug
 app.set('view engine', 'pug')
-
-// parsing setup
-// app.use(express.json())
-// app.use(express.urlencoded({ extended: false }))
-// app.use(cookieParser())
-
+// load static files in public folder
 app.use(express.static(path.join(__dirname, 'public')))
-
-// router section
-app.get('/', indexRouter)
-app.get('/about', aboutRouter)
-
-// app.get('/', function (req, res) {
-//   apiHelper.make_API_call('https://rhymebrain.com/talk?function=getRhymes&word=house')
-//     .then(response => {
-//       res.json(response)
-//     })
-//     .catch(error => {
-//       res.send(error)
-//     })
-// })
+// tucked away the routing
+require('./routes/_router')(app)
 
 module.exports = app
