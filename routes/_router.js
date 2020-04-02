@@ -2,7 +2,7 @@ const reqIndex = require('./index')
 const reqAbout = require('./about')
 
 // router/router.js
-module.exports = function (app) {
+const myRoutes = (app) => {
   app.use('/', reqIndex)
   app.use('/about', reqAbout)
   app.use((req, res) => {
@@ -14,3 +14,5 @@ module.exports = function (app) {
     res.render('500.pug', { title: '500: Internal Server Error', error: error })
   })
 }
+
+module.exports = myRoutes
