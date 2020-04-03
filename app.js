@@ -9,7 +9,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 // load static files in public folder
 app.use(express.static(path.join(__dirname, 'public')))
-// tucked away the routing
+
 require('./routes/_router')(app)
 
 module.exports = app
