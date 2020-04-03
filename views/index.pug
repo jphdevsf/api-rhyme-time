@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1.header-font= title
+  p Welcome to #{title} my friend
+  form#rhymeForm(method='post')
+    input#rhymeText(type='text' autofocus='true' name='text')
+    input#rhymeButton(type='submit', value='Get Me Some Rhymes!')
+    span.block
+      label(for='maxResults') Number of Words to Display:
+      select#maxResults.block
+        option(value='25' selected="selected") 25
+        option(value='50') 50
+        option(value='100') 100
+        option(value='500') 500
+
+  script(src='scripts.js')
+  div#results
+  p Rhyme results are provided by 
+  a(href='https://rhymebrain.com') RhymeBrain.com
