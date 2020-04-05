@@ -1,0 +1,80 @@
+body {
+  background-color:#111;
+  color: #ffffff;
+  font: 14px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+p, label {
+  margin: 0;
+  line-height: 2.25em;
+  font-size: 1em;
+}
+
+h1{
+  font-size: 3em;
+  font-weight: 300;
+}
+
+h2{
+  font-size: 2em;
+  font-weight: 300;
+}
+
+h3{
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+form input, form select {
+  line-height: 2.5em;
+  border: solid 1px #000000;
+  padding: 0.2em 0.8em;
+  box-sizing: border-box;
+  font-size:1.15em;
+}
+
+.smaller {
+  font-size: 0.85em;
+}
+.larger {
+  font-size: 1.15em;
+}
+
+.header-font {
+  font-family: "Poppins", sans-serif;
+}
+
+.salmon {
+  color: salmon;
+}
+
+.block {
+  display:block;
+}
+
+section#main {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 4em; /* height of your footer */
+ }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4em;
+ }
+
+ ul[class*="-syllable"] {
+    margin:0 2em;
+    padding:0;
+ }
+ ul[class*="-syllable"] li {
+   list-style-type: none;
+ }

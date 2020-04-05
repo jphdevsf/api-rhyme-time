@@ -1,8 +1,24 @@
 doctype html
 html
   head
+
+    // Touch Icons - iOS and Android 2.1+ 180x180 pixels in size.
+    link(rel='apple-touch-icon', href='images/favicon_io/apple-touch-icon.png')
+    // Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size.
+    link(rel='icon', href='images/favicon_io/android-chrome-192x192.png')
+
     title= title
-    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet', href='styles/basscss.min.css')
+    link(rel='stylesheet', href='styles/style.css')
     link(href='https://fonts.googleapis.com/css?family=Poppins&display=swap', rel='stylesheet')
+    script(src='scripts.js')
   body
-    block content
+    header.center
+      block header
+    section#main.center
+      block main
+    footer.center
+      block footer
+        p 
+          | Rhyme results are provided by 
+          a(href='https://rhymebrain.com') RhymeBrain.com

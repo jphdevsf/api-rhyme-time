@@ -1,20 +1,58 @@
 extends layout
 
-block content
+block header
   h1.header-font= title
+
+block main
   p Welcome to #{title} my friend
   form#rhymeForm(method='post')
     input#rhymeText(type='text' autofocus='true' name='text')
     input#rhymeButton(type='submit', value='Get Me Some Rhymes!')
     span.block
       label(for='maxResults') Number of Words to Display:
-      select#maxResults.block
+      select#maxResults
         option(value='25' selected="selected") 25
         option(value='50') 50
         option(value='100') 100
         option(value='500') 500
 
   script(src='scripts.js')
-  div#results
-  p Rhyme results are provided by 
-  a(href='https://rhymebrain.com') RhymeBrain.com
+  - var slantRhymesArray = []
+  if resultsArray
+    - var counter
+    - var syllables = ["one", "two", "three", "four"]
+    
+    div.primary-results
+      h2 Results for '#{wordSearched}'
+      span.flex.flex-row.flex-wrap.justify-around
+        each value,index in syllables
+          - counter = 0
+          ul(class=`${value}-syllable`)
+            li 
+              h3.uppercase #{value} Syllable Words
+            each object in resultsArray
+              if object.syllables == (index + 1) && object.score > 250
+                li.block #{object.word}
+                - counter = counter + 1
+              else 
+                - console.log(object)
+                - slantRhymesArray.push(object)
+            if counter == 0
+              span.capitalize No #{value} Syllable Words Found
+    
+    //-TODO Something broken here
+    //- div.secondary-results
+    //-   h2 Words that almost rhyme with '#{wordSearched}'
+    //-   span.flex.flex-row.flex-wrap.justify-around
+    //-     each value,index in syllables
+    //-       - counter = 0
+    //-       ul(class=`${value}-syllable`)
+    //-         li 
+    //-           h3.uppercase #{value} Syllable Words
+    //-         span= slantRhymesArray[0].word
+    //-         each object in slantRhymesArray
+    //-           if object.syllables == (index + 1) && object.score =< 250
+    //-             li.block #{object.word}
+    //-             - counter = counter + 1
+    //-         if counter == 0
+    //-           span.capitalize No ${value} Syllable Words Found
