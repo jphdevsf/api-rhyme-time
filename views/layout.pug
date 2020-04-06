@@ -1,6 +1,12 @@
 doctype html
 html
   head
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-162903575-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-162903575-1');
 
     // Touch Icons - iOS and Android 2.1+ 180x180 pixels in size.
     link(rel='apple-touch-icon', href='images/favicon_io/apple-touch-icon.png')
