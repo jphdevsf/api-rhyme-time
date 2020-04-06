@@ -1,3 +1,4 @@
+// Google Analytics
 window.dataLayer = window.dataLayer || []
 
 function gtag() {
@@ -5,6 +6,7 @@ function gtag() {
 }
 gtag('js', new Date())
 gtag('config', 'UA-162903575-1');
+
 // Google Tag Manager
 (function (w, d, s, l, i) {
   w[l] = w[l] || []
