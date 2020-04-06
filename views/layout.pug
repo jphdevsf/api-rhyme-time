@@ -1,30 +1,35 @@
 doctype html
 html
   head
+    meta(charset='UTF-8')
+    meta(name='description', content='A basic no-frills rhyme search app.')
+    meta(name='keywords', content='rhyme, lookup, reference, search, dictionary, finder')
+    meta(name='author', content='Jacob Hernandez')
+    meta(name='viewport', content='width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86')
+    
     script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-162903575-1')
-    script.
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-162903575-1');
-
-    // Touch Icons - iOS and Android 2.1+ 180x180 pixels in size.
+    script(async='', src='ga.js')
+    //- script(src='scripts.js')
     link(rel='apple-touch-icon', href='images/favicon_io/apple-touch-icon.png')
-    // Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size.
     link(rel='icon', href='images/favicon_io/android-chrome-192x192.png')
 
     title= title
     link(rel='stylesheet', href='styles/basscss.min.css')
     link(rel='stylesheet', href='styles/style.css')
-    link(href='https://fonts.googleapis.com/css?family=Poppins&display=swap', rel='stylesheet')
-    script(src='scripts.js')
+    link(href='https://fonts.googleapis.com/css?family=Poppins|Open+Sans:wght@300&display=swap', rel='stylesheet')
   body
-    header.center
-      block header
-    section#main.center
+    #wrapper
+      noscript
+        iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-P74VWZH', height='0', width='0', style='display:none;visibility:hidden')
+      header.vw.center
+        block header
+      span.spacer(aria-hidden='true') &nbsp;
       block main
-    footer.center
-      block footer
-        p 
-          | Rhyme results are provided by 
-          a(href='https://rhymebrain.com') RhymeBrain.com
+      span.spacer(aria-hidden='true') &nbsp;
+      span.spacer(aria-hidden='true') &nbsp;
+      footer.center.gray
+        block footer
+          p.smaller
+            | Rhyme results are provided by 
+            a(href='https://rhymebrain.com') RhymeBrain.com
+          small &copy; 2020 Jacob Hernandez

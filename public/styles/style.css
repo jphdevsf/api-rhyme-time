@@ -1,18 +1,24 @@
+
 body {
   background-color:#111;
   color: #ffffff;
-  font: 14px "Roboto", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  margin: 0;
 }
 
 a {
-  color: #00B7FF;
+  color: salmon;
 }
 p, label {
   margin: 0;
-  line-height: 2.25em;
+  line-height: 1.5em;
   font-size: 1em;
 }
 
+h1,h2,h3,h4,h5,h6, .poppins {
+  font-family: "Poppins", sans-serif;
+}
 h1{
   font-size: 3em;
   font-weight: 300;
@@ -24,7 +30,7 @@ h2{
 }
 
 h3{
-  font-size: 1em;
+  font-size: 0.75em;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -37,44 +43,107 @@ form input, form select {
   font-size:1.15em;
 }
 
+input {
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: salmon;
+}
+
+@media screen and (min-width: 640px) {
+  input {
+    width: 49.75%;
+  }
+}
+
+form {
+  width: 100%;
+  display: block;
+}
+
+
+/* utility classes */
 .smaller {
-  font-size: 0.85em;
+  font-size: smaller;
 }
 .larger {
   font-size: 1.15em;
-}
-
-.header-font {
-  font-family: "Poppins", sans-serif;
 }
 
 .salmon {
   color: salmon;
 }
 
+.gray {
+  color: #888888
+}
 .block {
   display:block;
 }
 
-section#main {
-  min-height: 100vh; /* will cover the 100% of viewport */
+.spacer {
+  display: block;
+  line-height: 1em;
+  font-size: 1em;
+  margin:0;
+  padding: 0;
+}
+
+.vw {
+  font-size: 3.5vw;
+}
+
+@media screen and (min-width: 640px) {
+  .vw {
+    font-size: 1em;
+  }
+}
+
+/* layout */
+#wrapper {
+  min-height: 100vh;
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 4em; /* height of your footer */
+  padding-bottom: 4em;
+  box-sizing: border-box;
  }
+#main {
+  width: 90%;
+  margin: auto;
+  max-width: 340px;
+  display: block;
+}
+
+#results {
+  width: 84%;
+  margin: auto;
+  display: block;
+}
 
 footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 90%;
   height: 4em;
+  left: 5%;
  }
 
  ul[class*="-syllable"] {
+  margin: 0 3% 3%;
+  padding: 0;
+  width: 43%;
+ }
+
+ @media screen and (min-width: 640px) {
+ ul[class*="-syllable"] {
     margin:0 2em;
     padding:0;
+    width: auto;
  }
+}
+
  ul[class*="-syllable"] li {
    list-style-type: none;
  }
