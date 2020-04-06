@@ -17,7 +17,7 @@ const myRoutes = (app) => {
     const reqUrl = `https://rhymebrain.com/talk?function=getRhymes&word=${formData.text}&maxResults=${maxResults}`
     fetch(reqUrl)
       .then((response) => {
-        console.log(response.status)
+        // console.log(response.status)
         return response.json()
       })
       .then((myData) => {

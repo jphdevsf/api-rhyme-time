@@ -50,10 +50,13 @@
 .caps,
 .uppercase {
   text-transform: uppercase;
-  letter-spacing: .2em
+  letter-spacing: .1em
 }
-
-.left-align {
+.capitalize {
+  text-transform: capitalize;
+}
+.left-align,
+.text-left {
   text-align: left
 }
 
@@ -62,7 +65,8 @@
   text-align: center
 }
 
-.right-align {
+.right-align,
+.text-right {
   text-align: right
 }
 
