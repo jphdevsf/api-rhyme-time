@@ -8,21 +8,30 @@ const myRoutes = (app) => {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   app.get('/', (req, res) => {
-    res.render('index', { title: 'Rhyme Time' })
+    res.render('index', {
+      title: 'Rhyme Time',
+      data: {},
+      errors: {}
+    })
   })
   app.post('/', (req, res) => {
     const formData = req.body
     //! maxResults selection from form is not working. Use Multer for multi line form data?
-    const maxResults = formData.maxResults ? formData.maxResults : 50
+    const maxResults = formData.maxResults ? formData.maxResults : 100
     const reqUrl = `https://rhymebrain.com/talk?function=getRhymes&word=${formData.text}&maxResults=${maxResults}`
     fetch(reqUrl)
       .then((response) => {
-        // console.log(response.status)
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
         return response.json()
       })
       .then((myData) => {
         // res.send(data)
         res.render('index', { title: 'Results | Rhyme Time', wordSearched: formData.text, resultsArray: myData })
+      })
+      .catch((error) => {
+        console.error('Oops, Fetch Operation Error:', error)
       })
   })
   app.use((req, res) => {

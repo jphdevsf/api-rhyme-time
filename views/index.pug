@@ -15,10 +15,13 @@ block main
     else
       p Type in the box Mr Fox in sox sir...
     span.spacer(aria-hidden='true') &nbsp;
-    form#rhymeForm(method='post')
+    form#rhymeForm(method='post' novalidate)
       span.md-flex.flex-row.justify-between
-        input#rhymeText(type='text' autofocus='true' name='text')
-        input#rhymeButton(type='submit', value='Search!')
+        label.hide(for='rhymeText') Please enter a word of 15 characters or less
+        input#rhymeText(type='text' autofocus='true' name='text' placeholder='fox' maxLength='15' pattern='[A-Za-z]+' title='text only non-numberic values' required)
+        span.error(aria-live='polite')
+        button#rhymeButton(type='submit') SEARCH
+      span.spacer(aria-hidden='true') &nbsp;
       span.spacer(aria-hidden='true') &nbsp;
       span.flex.flex-row.justify-between
         label.smaller(for='maxResults') Number of Words to Display: 
