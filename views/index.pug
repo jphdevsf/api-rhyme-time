@@ -23,8 +23,8 @@ block main
         button#rhymeButton(type='submit') SEARCH
       span.spacer(aria-hidden='true') &nbsp;
       span.spacer(aria-hidden='true') &nbsp;
-      span.flex.flex-row.justify-between
-        label.smaller(for='maxResults') Number of Words to Display: 
+      span.flex.flex-row.justify-end.items-center
+        label.smaller.mr2(for='maxResults') Number of Words to Display: 
         select#maxResults
           option(value='25' selected="selected") 25
           option(value='50') 50
@@ -36,9 +36,10 @@ block main
     - var counter
     - var syllables = ["one", "two", "three", "four"]
     
-    #results
+    #results.text-center
       h2.center Results for '#{wordSearched}'
-      span.flex.flex-row.flex-wrap.justify-around
+
+      span.flex.flex-row.flex-wrap.justify-around.text-left
         each value,index in syllables
           - counter = 0
           ul(class=`${value}-syllable`)
@@ -55,7 +56,9 @@ block main
                 - slantRhymesArray.push(object)
             if counter == 0
               span.smaller.gray.capitalize None
-    
+      span.spacer(aria-hidden='true') &nbsp;
+      span.spacer(aria-hidden='true') &nbsp;
+      a.salmon.inline-block(href='/') Start over
     //-TODO Something broken here
     //- div.secondary-results
     //-   h2 Words that almost rhyme with '#{wordSearched}'
