@@ -1,25 +1,31 @@
 extends layout
 
 block header
-  - console.log(resultsArray)
-  if !resultsArray
-    h1.salmon Rhyme Time
-  else 
-    h1.hide Rhyme Time
+  case true
+    when resultsArray !== undefined
+    when errorsArray !== undefined
+      h1.hide Rhyme Time
+    default 
+      h1.salmon Rhyme Time
 block main
   span#main
-    if resultsArray
-      p.poppins.text-left 
-        span.salmon Rhyme Time 
-        | by Jacob Her
-    else
-      p Type in the box Mr Fox in sox sir...
+    case true
+      when resultsArray !== undefined
+      when errorsArray !== undefined
+        p.poppins.text-left 
+          span.salmon Rhyme Time 
+          | by Jacob Her
+      default
+        p Type in the box Mr Fox in sox sir...
     span.spacer(aria-hidden='true') &nbsp;
     form#rhymeForm(method='post' novalidate)
       span.md-flex.flex-row.justify-between
         label.hide(for='rhymeText') Please enter a word of 15 characters or less
-        input#rhymeText(type='text' autofocus='true' name='text' placeholder='fox' maxLength='15' pattern='[A-Za-z]+' title='text only non-numberic values' required)
+        input#rhymeText(type='text' autofocus='true' name='rhymeText' placeholder='fox' maxLength='15' pattern='[A-Za-z]+' title='text only non-numberic values' required)
         span.error(aria-live='polite')
+        if errorsArray
+          - var serverError = (errorsArray.length == 2) ? errorsArray[1].msg : errorsArray[0].msg
+          span.error(aria-live='polite') #{serverError}
         button#rhymeButton(type='submit') SEARCH
       span.spacer(aria-hidden='true') &nbsp;
       span.spacer(aria-hidden='true') &nbsp;
@@ -34,7 +40,7 @@ block main
   - var slantRhymesArray = []
   if resultsArray
     - var counter
-    - var syllables = ["one", "two", "three", "four"]
+    - var syllables = ["1", "2", "3", "4"]
     
     #results.text-center
       h2.center Results for '#{wordSearched}'
@@ -45,9 +51,7 @@ block main
           ul(class=`${value}-syllable`)
             li 
               h3.salmon.uppercase 
-                | #{value} Syllable 
-                br.lg-hide
-                | Words
+                | #{value} Syllable Words
             each object in resultsArray
               if object.syllables == (index + 1) && object.score > 225
                 li.block #{object.word}
@@ -59,6 +63,7 @@ block main
       span.spacer(aria-hidden='true') &nbsp;
       span.spacer(aria-hidden='true') &nbsp;
       a.salmon.inline-block(href='/') Start over
+      
     //-TODO Something broken here
     //- div.secondary-results
     //-   h2 Words that almost rhyme with '#{wordSearched}'
