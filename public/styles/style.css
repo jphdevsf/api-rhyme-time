@@ -26,7 +26,7 @@ h1{
 }
 
 h2{
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 300;
 }
 
@@ -104,6 +104,10 @@ input#rhymeText.invalid:focus {
   color: salmon;
 }
 
+.bg-salmon {
+  background-color: salmon;
+}
+
 .gray {
   color: #888888
 }
@@ -147,10 +151,29 @@ input#rhymeText.invalid:focus {
   display: block;
 }
 
-#results {
+.inset {
   width: 95%;
   margin: auto;
   display: block;
+}
+
+.rule {
+  height: 1px;
+  border: none;
+}
+
+#slant-rhymes {
+  max-width: 900px;
+}
+
+#slant-rhymes ul {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+#slant-rhymes li {
+  display: inline-block;
+  margin: 0 0.5em;
 }
 
 footer {

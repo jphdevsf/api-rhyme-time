@@ -7,6 +7,7 @@ block header
       h1.hide Rhyme Time
     default 
       h1.salmon Rhyme Time
+
 block main
   span#main
     case true
@@ -16,8 +17,8 @@ block main
           span.salmon Rhyme Time 
           | by Jacob Her
       default
-        p Type in the box Mr Fox in sox sir...
-    span.spacer(aria-hidden='true') &nbsp;
+        p type in the box mr fox in sox sir...
+    +spacer(8)
     form#rhymeForm(method='post' novalidate)
       span.md-flex.flex-row.justify-between
         label.hide(for='rhymeText') Please enter a word of 15 characters or less
@@ -27,10 +28,9 @@ block main
           - var serverError = (errorsArray.length == 2) ? errorsArray[1].msg : errorsArray[0].msg
           span.error(aria-live='polite') #{serverError}
         button#rhymeButton(type='submit') SEARCH
-      span.spacer(aria-hidden='true') &nbsp;
-      span.spacer(aria-hidden='true') &nbsp;
+      +spacer(16)
       span.flex.flex-row.justify-end.items-center
-        label.smaller.mr2(for='maxResults') Number of Words to Display: 
+        label.smaller.mr2(for='maxResults') number of words to display: 
         select#maxResults
           option(value='25' selected="selected") 25
           option(value='50') 50
@@ -38,13 +38,15 @@ block main
           option(value='500') 500
 
   - var slantRhymesArray = []
-  if resultsArray
+  if resultsArray !== undefined
     - var counter
     - var syllables = ["1", "2", "3", "4"]
     
-    #results.text-center
-      h2.center Results for '#{wordSearched}'
-
+    #results.inset.text-center
+      +spacer(16)
+      h2.center 
+        | #{wordSearched} 
+        span.salmon rhymes
       span.flex.flex-row.flex-wrap.justify-around.text-left
         each value,index in syllables
           - counter = 0
@@ -53,30 +55,26 @@ block main
               h3.salmon.uppercase 
                 | #{value} Syllable Words
             each object in resultsArray
-              if object.syllables == (index + 1) && object.score > 225
+              if object.syllables == (index + 1) && object.score >= 225
                 li.block #{object.word}
                 - counter = counter + 1
-              else 
-                - slantRhymesArray.push(object)
+              else if object.syllables == (index + 1) && object.score < 225 && object.score > 100
+                - slantRhymesArray.push(object.word)
             if counter == 0
               span.smaller.gray.capitalize None
-      span.spacer(aria-hidden='true') &nbsp;
-      span.spacer(aria-hidden='true') &nbsp;
-      a.salmon.inline-block(href='/') Start over
-      
-    //-TODO Something broken here
-    //- div.secondary-results
-    //-   h2 Words that almost rhyme with '#{wordSearched}'
-    //-   span.flex.flex-row.flex-wrap.justify-around
-    //-     each value,index in syllables
-    //-       - counter = 0
-    //-       ul(class=`${value}-syllable`)
-    //-         li 
-    //-           h3.uppercase #{value} Syllable Words
-    //-         span= slantRhymesArray[0].word
-    //-         each object in slantRhymesArray
-    //-           if object.syllables == (index + 1) && object.score =< 250
-    //-             li.block #{object.word}
-    //-             - counter = counter + 1
-    //-         if counter == 0
-    //-           span.capitalize No ${value} Syllable Words Found
+      +spacer(24)
+      .rule.inset.bg-salmon
+
+  if slantRhymesArray.length > 0
+    div#slant-rhymes.inset
+      h2.center 
+        | #{wordSearched} 
+        span.salmon slant shymes
+      ul.text-center.block
+        each value in slantRhymesArray
+          li #{value} 
+      +spacer(40)
+      .rule.inset.bg-salmon
+
+  if resultsArray !== undefined || slantRhymesArray.length > 0
+    a.salmon.inline-block.my3(href='/') start over

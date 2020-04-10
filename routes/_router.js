@@ -30,7 +30,7 @@ const myRoutes = (app) => {
     const formData = req.body
     console.log(formData)
     //! maxResults selection from form is not working. Use Multer for multi line form data?
-    const maxResults = formData.maxResults ? formData.maxResults : 100
+    const maxResults = formData.maxResults ? formData.maxResults : 200
     const reqUrl = `https://rhymebrain.com/talk?function=getRhymes&word=${formData.rhymeText}&maxResults=${maxResults}`
 
     fetch(reqUrl)
