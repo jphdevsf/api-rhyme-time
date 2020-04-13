@@ -20,7 +20,9 @@ const myRoutes = (app) => {
   app.post('/', [
     check('rhymeText')
       .matches(/^[a-zA-Z]+$/).withMessage('Only letters are allowed.')
-      .isLength({ min: 1, max: 15 }).withMessage('Please enter between 1 and 15 letters.')
+      .isLength({ min: 1, max: 15 }).withMessage('Please enter between 1 and 15 letters.'),
+    check('maxResults')
+      .isInt({ max: 500, allow_leading_zeroes: false }).withMessage('Incorrect number of results requested')
   ], (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -28,8 +30,6 @@ const myRoutes = (app) => {
     }
     // if above passes, go get the rhymes!
     const formData = req.body
-    console.log(formData)
-    //! maxResults selection from form is not working. Use Multer for multi line form data?
     const maxResults = formData.maxResults ? formData.maxResults : 200
     const reqUrl = `https://rhymebrain.com/talk?function=getRhymes&word=${formData.rhymeText}&maxResults=${maxResults}`
 

@@ -49,6 +49,7 @@ form input, form select, form button {
   padding: 0.2em 0.8em;
   box-sizing: border-box;
   font-size:1.15em;
+  text-transform: lowercase;
 }
 
 form input, form button {
@@ -163,7 +164,7 @@ input#rhymeText.invalid:focus {
 }
 
 #slant-rhymes {
-  max-width: 900px;
+  /* max-width: 900px; */
 }
 
 #slant-rhymes ul {

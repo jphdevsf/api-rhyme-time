@@ -31,10 +31,10 @@ block main
       +spacer(16)
       span.flex.flex-row.justify-end.items-center
         label.smaller.mr2(for='maxResults') number of words to display: 
-        select#maxResults
-          option(value='25' selected="selected") 25
+        select#maxResults(name='maxResults')
           option(value='50') 50
-          option(value='100') 100
+          option(value='100' selected="selected") 100
+          option(value='200') 200
           option(value='500') 500
 
   - var slantRhymesArray = []
@@ -63,7 +63,7 @@ block main
             if counter == 0
               span.smaller.gray.capitalize None
       +spacer(24)
-      .rule.inset.bg-salmon
+      .rule.bg-salmon
 
   if slantRhymesArray.length > 0
     div#slant-rhymes.inset
@@ -74,7 +74,7 @@ block main
         each value in slantRhymesArray
           li #{value} 
       +spacer(40)
-      .rule.inset.bg-salmon
+      .rule.bg-salmon
 
   if resultsArray !== undefined || slantRhymesArray.length > 0
     a.salmon.inline-block.my3(href='/') start over
